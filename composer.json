@@ -1,0 +1,6 @@
+{
+    "name": "tamakiii-sandbox/hello-aws-php-sdk-cloudfront",
+    "require": {
+        "aws/aws-sdk-php": "^3.183"
+    }
+}

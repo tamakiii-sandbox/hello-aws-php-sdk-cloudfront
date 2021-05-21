@@ -1,4 +1,4 @@
-.PHONY: help build login clean
+.PHONY: help build login run clean
 
 NAME := hello-aws-php-sdk-cloudfront
 
@@ -9,7 +9,10 @@ build: Dockerfile
 	docker build -t $(NAME) .
 
 login:
-	docker run -it --rm -v $(realpath .):/local/$(NAME) -w /local/$(NAME) $(NAME) bash
+	docker run -it --rm -v $(realpath .):/local/$(NAME) -w /local/$(NAME) --env-file=.env $(NAME) bash
+
+run:
+	docker run -it --rm -v $(realpath .):/local/$(NAME) -w /local/$(NAME) --env-file=.env $(NAME) php main.php
 
 clean:
 	docker image rm $(NAME)
